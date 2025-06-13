@@ -51,3 +51,4 @@ __all__ = [
     "initialize_ray_cluster",
     "PoolingParams",
 ]
+print("✅ Using my local vLLM Python code!")
