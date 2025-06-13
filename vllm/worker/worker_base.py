@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: Apache-2.0
 # SPDX-FileCopyrightText: Copyright contributors to the vLLM project
-
+import pdb
 import dataclasses
 import os
 import time
@@ -163,6 +163,7 @@ class DelegateWorkerBase(WorkerBase):
         self.worker.load_model()
 
     def get_model(self) -> nn.Module:
+        pdb.set_trace()
         return self.worker.get_model()
 
     def execute_model(
