@@ -24,7 +24,16 @@ llm = LLM(
 outputs = llm.generate(prompts, sampling_params)
 
 for output in outputs:
-    prompt = output.prompt
+    full_prompt = output.prompt
     generation = output.outputs[0].text.strip()
-    print(f"{prompt}{generation}")
-    print('-------------')
+
+    # Extract user message from chat-formatted prompt
+    if "<|im_start|>user" in full_prompt:
+        user_msg = full_prompt.split("<|im_start|>user\n")[1].split("<|im_end|>")[0].strip()
+    else:
+        user_msg = full_prompt.strip()
+
+    print(f"Prompt: {user_msg}")
+    print(f"LLM: {generation}")
+    print("-------------")
+
