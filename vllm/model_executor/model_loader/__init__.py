@@ -53,7 +53,8 @@ def get_model_loader(load_config: LoadConfig) -> BaseModelLoader:
 def get_model(*,
               vllm_config: VllmConfig,
               model_config: Optional[ModelConfig] = None) -> nn.Module:
-    import pdb; pdb.set_trace()  # Debug: See what model is being loaded
+    print(f"🔍 DEBUG: Loading model: {vllm_config.model_config.model}")
+    print(f"🔍 DEBUG: Load format: {vllm_config.load_config.load_format}")
     loader = get_model_loader(vllm_config.load_config)
     if model_config is None:
         model_config = vllm_config.model_config
