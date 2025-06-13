@@ -1,8 +1,5 @@
 from vllm import LLM, SamplingParams
 
-# from huggingface_hub import login
-# login(token="")
-
 prompts = [
     "Hello, my name is",
     "The president of the United States is",
@@ -10,23 +7,20 @@ prompts = [
     "The future of AI is",
     "DeepSpeed is a",
 ]
+
 sampling_params = SamplingParams(temperature=0.8, top_p=0.95, max_tokens=200)
 
 llm = LLM(
     model="Qwen/Qwen2.5-7B-Instruct",
     tokenizer="Qwen/Qwen2.5-7B-Instruct",
-    dtype="auto",            # auto-detect precision
-    max_model_len=8192       # or leave blank to use default
+    dtype="auto",
+    max_model_len=8192
 )
-# llm = LLM(model="facebook/opt-125m")
-#llm = LLM(model="mistralai/Mixtral-8x7B-v0.1", tensor_parallel_size=2, max_model_len=200)
+
 outputs = llm.generate(prompts, sampling_params)
-# Print the outputs.
-# print (outputs)
-# import pdb;pdb.set_trace()
+
 for output in outputs:
     prompt = output.prompt
-    out= output.outputs
-    print (prompt)
-    print (out)
-    print ('-------------')
+    generation = output.outputs[0].text.strip()
+    print(f"{prompt}{generation}")
+    print('-------------')
