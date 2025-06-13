@@ -22,7 +22,7 @@ llm = LLM(
 #llm = LLM(model="mistralai/Mixtral-8x7B-v0.1", tensor_parallel_size=2, max_model_len=200)
 outputs = llm.generate(prompts, sampling_params)
 # Print the outputs.
-print (outputs)
+# print (outputs)
 # import pdb;pdb.set_trace()
 for output in outputs:
     prompt = output.prompt
