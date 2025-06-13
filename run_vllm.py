@@ -1,12 +1,16 @@
 from vllm import LLM, SamplingParams
+def format_prompt(text):
+    return f"<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n{text}<|im_end|>\n<|im_start|>assistant\n"
 
-prompts = [
+raw_prompts = [
     "Hello, my name is",
     "The president of the United States is",
     "The capital of France is",
     "The future of AI is",
     "DeepSpeed is a",
 ]
+
+prompts = [format_prompt(p) for p in raw_prompts]
 
 sampling_params = SamplingParams(temperature=0.8, top_p=0.95, max_tokens=200)
 
