@@ -46,6 +46,7 @@ def initialize_model(
     model_config: Optional[ModelConfig] = None,
 ) -> nn.Module:
     """Initialize a model with the given configurations."""
+    import pdb; pdb.set_trace()  # Debug: See what model class is being initialized
     if model_config is None:
         model_config = vllm_config.model_config
     if model_class is None:
@@ -218,6 +219,7 @@ def resolve_transformers_arch(model_config: ModelConfig,
 
 def get_model_architecture(
         model_config: ModelConfig) -> tuple[type[nn.Module], str]:
+    import pdb; pdb.set_trace()  # Debug: See what architecture is being resolved
     architectures = getattr(model_config.hf_config, "architectures", [])
 
     # Special handling for quantized Mixtral.
