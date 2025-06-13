@@ -402,6 +402,11 @@ class LocalOrDistributedWorkerBase(WorkerBase):
         if (execute_model_req is not None and execute_model_req.spec_step_idx):
             kwargs["spec_step_idx"] = execute_model_req.spec_step_idx
 
+        # Print model class info
+        model = self.model_runner.get_model()
+        print(f"\n🔍 DEBUG: Using model class: {type(model).__name__}")
+        print(f"🔍 DEBUG: Model file: {type(model).__module__}\n")
+
         self.execute_worker(worker_input)
 
         # If there is no input, we don't need to execute the model.

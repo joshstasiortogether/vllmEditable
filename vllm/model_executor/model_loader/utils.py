@@ -51,9 +51,6 @@ def initialize_model(
     if model_class is None:
         model_class, _ = get_model_architecture(model_config)
     
-    print(f"🔍 DEBUG: Initializing model class: {model_class.__name__}")
-    print(f"🔍 DEBUG: Model class module: {model_class.__module__}")
-
     if vllm_config.quant_config is not None:
         configure_quant_config(vllm_config.quant_config, model_class)
 
@@ -221,9 +218,7 @@ def resolve_transformers_arch(model_config: ModelConfig,
 
 def get_model_architecture(
         model_config: ModelConfig) -> tuple[type[nn.Module], str]:
-    print(f"🔍 DEBUG: Resolving architecture for model: {model_config.model}")
     architectures = getattr(model_config.hf_config, "architectures", [])
-    print(f"🔍 DEBUG: Available architectures: {architectures}")
 
     # Special handling for quantized Mixtral.
     # FIXME(woosuk): This is a temporary hack.
@@ -250,8 +245,6 @@ def get_model_architecture(
     elif model_config.task == "reward":
         model_cls = as_reward_model(model_cls)
 
-    print(f"🔍 DEBUG: Selected model class: {model_cls.__name__}")
-    print(f"🔍 DEBUG: Selected architecture: {arch}")
     return model_cls, arch
 
 
