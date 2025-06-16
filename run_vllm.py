@@ -27,7 +27,6 @@ llm = LLM(
     dtype="auto",
     max_model_len=8192,
     tensor_parallel_size=1,
-    disable_compilation=True,
     enforce_eager=True
 )
 
