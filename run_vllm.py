@@ -1,3 +1,10 @@
+import os
+# Set environment variables to disable PyTorch compilation
+os.environ["TORCH_COMPILE_DEBUG"] = "1"
+os.environ["TORCH_COMPILE"] = "0" 
+os.environ["TORCHDYNAMO_DISABLE"] = "1"
+os.environ["VLLM_USE_COMPILATION"] = "0"
+
 from vllm import LLM, SamplingParams
 def format_prompt(text):
     return f"<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user\n{text}<|im_end|>\n<|im_start|>assistant\n"
@@ -20,7 +27,8 @@ llm = LLM(
     dtype="auto",
     max_model_len=8192,
     tensor_parallel_size=1,
-    disable_compilation=True
+    disable_compilation=True,
+    enforce_eager=True
 )
 
 outputs = llm.generate(prompts, sampling_params)

@@ -199,7 +199,15 @@ class Attention(nn.Module):
         context using
         `vllm.forward_context.get_forward_context().attn_metadata`.
         """
-        pdb.set_trace()  # This will break into pdb when forward is called
+        # Alternative to pdb that works better with PyTorch compilation
+        import sys
+        print("DEBUG: Forward method called in Attention layer", file=sys.stderr)
+        print(f"DEBUG: Query shape: {query.shape}", file=sys.stderr)
+        print(f"DEBUG: Key shape: {key.shape if key is not None else None}", file=sys.stderr)
+        print(f"DEBUG: Value shape: {value.shape if value is not None else None}", file=sys.stderr)
+        # Uncomment to manually break here (will pause execution)
+        # import time; time.sleep(30)  # Sleep to give time to attach debugger
+        
         if self.calculate_kv_scales:
             attn_metadata = get_forward_context().attn_metadata
             if attn_metadata.enable_kv_scales_calculation:
