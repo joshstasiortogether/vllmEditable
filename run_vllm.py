@@ -19,7 +19,8 @@ llm = LLM(
     tokenizer="Qwen/Qwen2.5-7B-Instruct",
     dtype="auto",
     max_model_len=8192,
-    tensor_parallel_size=1
+    tensor_parallel_size=1,
+    disable_compilation=True
 )
 
 outputs = llm.generate(prompts, sampling_params)
