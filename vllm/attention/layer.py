@@ -206,7 +206,7 @@ class Attention(nn.Module):
         # print(f"DEBUG: Key shape: {key.shape if key is not None else None}", file=sys.stderr)
         # print(f"DEBUG: Value shape: {value.shape if value is not None else None}", file=sys.stderr)
         # Uncomment to manually break here (will pause execution)
-        # import time; time.sleep(30)  # Sleep to give time to attach debugger
+        import time; time.sleep(30)  # Sleep to give time to attach debugger
         pdb.set_trace()
         
         if self.calculate_kv_scales:
