@@ -82,8 +82,8 @@ class Qwen2MLP(nn.Module):
             quant_config=quant_config,
             prefix=f"{prefix}.down_proj",
         )
-       # import pdb;
-       # pdb.set_trace()
+        import pdb
+        pdb.set_trace()
         if hidden_act != "silu":
             raise ValueError(f"Unsupported activation: {hidden_act}. "
                              "Only silu is supported for now.")
