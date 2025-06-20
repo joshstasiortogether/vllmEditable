@@ -22,8 +22,8 @@ prompts = [format_prompt(p) for p in raw_prompts]
 sampling_params = SamplingParams(temperature=0.8, top_p=0.95, max_tokens=200)
 
 llm = LLM(
-    model="Qwen/Qwen2.5-7B-Instruct",
-    tokenizer="Qwen/Qwen2.5-7B-Instruct",
+    model="meta-llama/Llama-2-7b-chat-hf",
+    # tokenizer="Qwen/Qwen2.5-7B-Instruct",
     dtype="auto",
     max_model_len=8192,
     tensor_parallel_size=1,
