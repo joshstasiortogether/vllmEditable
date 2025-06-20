@@ -1841,6 +1841,8 @@ class ModelRunner(GPUModelRunnerBase[ModelInputForGPUWithSamplingMetadata]):
         if not bypass_model_exec:
             with set_forward_context(model_input.attn_metadata,
                                      self.vllm_config, virtual_engine):
+                import pdb
+                pdb.set_trace()
                 hidden_or_intermediate_states = model_executable(
                     input_ids=model_input.input_tokens,
                     inputs_embeds=model_input.inputs_embeds,
