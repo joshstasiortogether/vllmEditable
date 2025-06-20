@@ -27,6 +27,8 @@ llm = LLM(
     dtype="auto",
     max_model_len=8192,
     tensor_parallel_size=1,
+    kv_cache_dtype="fp8",
+    calculate_kv_scales=True,
     enforce_eager=True
 )
 
