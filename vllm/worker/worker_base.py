@@ -404,8 +404,8 @@ class LocalOrDistributedWorkerBase(WorkerBase):
 
         # Print model class info
         model = self.model_runner.get_model()
-        print(f"\n🔍 DEBUG: Using model class: {type(model).__name__}")
-        print(f"🔍 DEBUG: Model file: {type(model).__module__}\n")
+        # print(f"\n🔍 DEBUG: Using model class: {type(model).__name__}")
+        # print(f"🔍 DEBUG: Model file: {type(model).__module__}\n")
 
         self.execute_worker(worker_input)
 
