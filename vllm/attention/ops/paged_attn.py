@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from typing import List, Optional, Tuple
 
 import torch
+import pdb
 
 from vllm import _custom_ops as ops
 from vllm.triton_utils import HAS_TRITON
@@ -75,6 +76,7 @@ class PagedAttention:
         k_scale: torch.Tensor,
         v_scale: torch.Tensor,
     ) -> None:
+        pdb.set_trace()
         ops.reshape_and_cache(
             key,
             value,
